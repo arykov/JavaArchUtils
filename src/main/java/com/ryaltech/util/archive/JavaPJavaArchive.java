@@ -70,7 +70,11 @@ public class JavaPJavaArchive {
      */
     public static String javapClass(final InputStream is) throws Exception {
         JavapEnvironment env = new JavapEnvironment();
+        
         setField(env, "showDisassembled", true);
+        setField(env, "showLineAndLocal", true);
+        //setField(env, "showVerbose", true);
+        setField(env, "showInternalSigs", true);
         OutputStream output = new OutputStream()
         {
             private StringBuilder string = new StringBuilder();
