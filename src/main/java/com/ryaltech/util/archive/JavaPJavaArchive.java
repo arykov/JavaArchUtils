@@ -68,7 +68,7 @@ public class JavaPJavaArchive {
      * @param is
      * @throws Exception
      */
-    public static void javapClass(final InputStream is) throws Exception {
+    public static String javapClass(final InputStream is) throws Exception {
         JavapEnvironment env = new JavapEnvironment();
         setField(env, "showDisassembled", true);
         OutputStream output = new OutputStream()
@@ -90,10 +90,15 @@ public class JavaPJavaArchive {
         JavapPrinter printer = new JavapPrinter(is, pw, env);
         printer.print();
         pw.close();
-        System.out.println(output.toString());
+        return output.toString();
+        
 
     }
 
+    public static void printJavaPClass(InputStream is)throws Exception{
+        System.out.println(javapClass(is));
+    }
+    
     public static void main(String... args) throws Exception {
 
         if (args.length != 1) {
@@ -131,7 +136,7 @@ public class JavaPJavaArchive {
     public static void processFile(String name, InputStream fileInputStream) throws Exception {
         if (name.endsWith(".class")) {
             System.out.println("Processing class: " + name);
-            javapClass(fileInputStream);
+            printJavaPClass(fileInputStream);
 
         } else if (name.endsWith(".jar") || name.endsWith(".ear") || name.endsWith(".war") || name.endsWith(".rar")) {
             System.out.println("Processing archive: " + name);

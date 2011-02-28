@@ -5,13 +5,13 @@ import java.util.Arrays;
 
 public class BinaryComparator extends BaseComparator{
 
-    @Override
-    public boolean compare(Comparable c1, Comparable c2) {
+
+    public boolean compare(Comparable c1, Comparable c2, boolean reportResults) {
         if (isSame(c1.getInputStream(), c2.getInputStream())) {
-            reportMatch(c1.getFullName(), c2.getFullName());            
+            reportMatch(c1.getFullName(), c2.getFullName(), reportResults);            
             return true;
         } else {
-            reportMisMatch(c1.getFullName(), c2.getFullName());            
+            reportMisMatch(c1.getFullName(), c2.getFullName(), reportResults);            
             return false;
         }
     }

@@ -42,8 +42,8 @@ public class ZipComparator extends BaseComparator {
         };
     }
 
-    @Override
-    public boolean compare(Comparable c1, Comparable c2) {
+
+    public boolean compare(Comparable c1, Comparable c2, boolean reportResults) {
         File file1 = saveTempFile(c1.getInputStream());
         File file2 = saveTempFile(c2.getInputStream());
 
@@ -68,7 +68,7 @@ public class ZipComparator extends BaseComparator {
                     if (ze1.getCrc() != ze2.getCrc()) {
                         zipEntryDeepInspectionList.add(new ZipEntry[] { ze1, ze2 });
                     } else {
-                        reportMatch("(based on CRC)", c1.getFullName() + ":" + ze1.getName(), c2.getFullName() + ":" + ze2.getName());
+                        reportMatch("(based on CRC)", c1.getFullName() + ":" + ze1.getName(), c2.getFullName() + ":" + ze2.getName(), reportResults);
                     }
 
                 }

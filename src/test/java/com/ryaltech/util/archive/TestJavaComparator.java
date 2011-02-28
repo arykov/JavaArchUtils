@@ -83,6 +83,18 @@ public class TestJavaComparator extends TestCase {
     }
 
 
+    public void testIdenticalClassesBinaryDifferent()throws Exception{
+        assertTrue(new JavaComparator().compareFiles(changeTestResourcePath("${testresourcepath}/v1.binarydiffclass/CAMAccountAbandoned_20050528.class"), changeTestResourcePath("${testresourcepath}/v2.binarydiffclass/CAMAccountAbandoned_20050528.class")));
+    }
+    
+    public void testIdenticalClassesBinaryDifferentInJars()throws Exception{
+        assertTrue(new JavaComparator().compareFiles(changeTestResourcePath("${testresourcepath}/v1.binarydiffclass/CAMAccountAbandoned_20050528.jar"), changeTestResourcePath("${testresourcepath}/v2.binarydiffclass/CAMAccountAbandoned_20050528.jar")));
+    }
+    
+    public void testDifferentClassesBinaryAndJavaP()throws Exception{
+        assertFalse(new JavaComparator().compareFiles(changeTestResourcePath("${testresourcepath}/v1.binarydiffclass/DummyClass.class"), changeTestResourcePath("${testresourcepath}/v2.binarydiffclass/DummyClass1.class")));
+    }
+    
     public void tearDown() {
         ps.reset();
     }

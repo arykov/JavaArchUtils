@@ -2,7 +2,7 @@ package com.ryaltech.util.archive;
 
 import java.io.InputStream;
 
-public class DummyClass {
+public class DummyClass1 {
     static{
         String x = new String("1234");
         System.out.println(x.toLowerCase());
